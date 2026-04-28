@@ -18,6 +18,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const animatedElements = document.querySelectorAll('.page-flip-scroll');
     animatedElements.forEach(el => observer.observe(el));
 
+    // Base language selector for future translations.
+    const languageSelector = document.querySelector('[data-language-selector]');
+    if (languageSelector) {
+        const savedLanguage = localStorage.getItem('archiveLanguage') || document.documentElement.lang || 'ja';
+        const availableOption = languageSelector.querySelector(`option[value="${savedLanguage}"]`);
+        if (availableOption) {
+            languageSelector.value = savedLanguage;
+        }
+
+        languageSelector.addEventListener('change', (event) => {
+            const selectedOption = event.target.selectedOptions[0];
+            const selectedLanguage = event.target.value;
+            localStorage.setItem('archiveLanguage', selectedLanguage);
+
+            if (selectedOption && selectedOption.dataset.url) {
+                window.location.href = selectedOption.dataset.url;
+            }
+        });
+    }
+
     // 2. Navbar glass effect on scroll
     const navbar = document.querySelector('.navbar');
     if (navbar) {
