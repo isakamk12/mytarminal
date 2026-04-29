@@ -139,6 +139,23 @@ a {
     padding-right: 0.2rem;
 }
 
+.persona-textbox {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+    background: var(--paper-card);
+    border: 1px solid rgba(26, 26, 26, 0.18);
+    border-left: 6px solid var(--ink-red);
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.persona-textbox p {
+    margin: 0;
+    color: var(--ink-black);
+    line-height: 2;
+    text-align: justify;
+}
+
 /* Base Sections */
 .section-padding {
     padding: 8rem 2rem 4rem;
