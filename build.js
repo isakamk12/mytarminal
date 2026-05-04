@@ -41,6 +41,10 @@ files.forEach(f => {
         if (inBubble) newLines.push('</div></div>');
         
         mdHtml = newLines.join('\n');
+
+        // 3. Add callout styling hooks for "→" lines (placed as separate paragraphs in markdown)
+        //    - "→..." だけじゃなく "妹･弟→..." / "私→..." みたいに先頭付近に矢印がある段落も対象
+        mdHtml = mdHtml.replace(/<p>([^<]{0,12}→)/g, '<p class="md-callout">$1');
         
         // replace the loading spinner with the actual HTML content
         const targetStr = `<div class="loader">

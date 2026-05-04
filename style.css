@@ -150,10 +150,47 @@ a {
 }
 
 .persona-textbox p {
-    margin: 0;
+    margin: 0 0 1rem 0;
     color: var(--ink-black);
-    line-height: 2;
-    text-align: justify;
+    line-height: 2.05;
+    text-align: left;
+    word-break: break-word;
+}
+
+.persona-content p:last-child {
+    margin-bottom: 0;
+}
+
+.persona-list {
+    margin: 1.5rem 0 1.75rem;
+    padding-left: 0;
+    list-style-position: inside;
+    display: grid;
+    gap: 1.1rem;
+}
+
+.persona-list > li {
+    background: rgba(0,0,0,0.02);
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    border-left: 4px solid rgba(139, 30, 40, 0.55);
+    border-radius: 4px;
+    padding: 1.2rem 1.2rem 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .persona-textbox { padding: 1.5rem 1.25rem; }
+    .persona-list > li { padding: 1.05rem 1.05rem 0.8rem; }
+}
+
+.persona-list-title {
+    font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.7rem;
+}
+
+.persona-list > li p:last-child {
+    margin-bottom: 0;
 }
 
 /* Base Sections */
@@ -348,8 +385,96 @@ a {
 
 .card-inner p {
     color: var(--ink-light);
-    font-size: 0.95rem;
-    text-align: justify;
+    font-size: 1rem;
+    line-height: 2;
+    text-align: left;
+    word-break: break-word;
+}
+
+/* Career Timeline (Chapter II) */
+.about-timeline {
+    grid-template-columns: 1fr;
+    max-width: 920px;
+    margin: 0 auto;
+    gap: 1.6rem;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.about-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(139, 30, 40, 0.5), rgba(26,26,26,0.15));
+}
+
+.about-timeline .about-card {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.about-timeline .about-card::before {
+    display: none;
+}
+
+.about-timeline .card-inner {
+    position: relative;
+    background: var(--paper-card);
+    border: 1px solid rgba(26, 26, 26, 0.14);
+    border-left: 6px solid rgba(139, 30, 40, 0.55);
+    border-radius: 4px;
+    box-shadow: 10px 10px 28px rgba(0,0,0,0.05);
+    padding: 2.1rem 2.2rem 2rem 4.2rem;
+}
+
+.about-timeline .card-inner::before {
+    content: '';
+    position: absolute;
+    left: -2.05rem;
+    top: 2.25rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--paper-card);
+    border: 2px solid rgba(139, 30, 40, 0.8);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.about-timeline .card-inner i {
+    position: absolute;
+    left: 1.25rem;
+    top: 2rem;
+    margin: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(139, 30, 40, 0.06);
+    border: 1px solid rgba(139, 30, 40, 0.25);
+}
+
+.about-timeline .card-inner h3 {
+    font-size: 1.55rem;
+}
+
+.about-timeline .card-inner p {
+    font-size: 1.02rem;
+}
+
+@media (max-width: 768px) {
+    .about-timeline { padding-left: 0.95rem; gap: 1.25rem; }
+    .about-timeline::before { left: 0.35rem; }
+    .about-timeline .card-inner { padding: 1.6rem 1.35rem 1.4rem 3.6rem; }
+    .about-timeline .card-inner::before { left: -1.7rem; top: 1.75rem; }
+    .about-timeline .card-inner i { left: 0.9rem; top: 1.5rem; width: 36px; height: 36px; font-size: 1.3rem; }
+    .about-timeline .card-inner h3 { font-size: 1.35rem; }
 }
 
 /* Skills Container */
@@ -489,6 +614,23 @@ a {
     flex-grow: 1;
 }
 
+.book-links {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.book-links a {
+    font-weight: bold;
+    border-bottom: 1px solid var(--ink-red);
+    display: inline-block;
+    align-self: flex-start;
+    color: var(--ink-red);
+    padding-bottom: 2px;
+}
+
 .tags {
     display: flex;
     gap: 0.5rem;
@@ -616,8 +758,38 @@ a {
 .article-bg { background-color: var(--bg-paper); color: var(--ink-black); }
 .article-bg .logo, .article-bg .nav-links a { color: var(--ink-black); }
 .article-bg .back-link { color: var(--ink-black); border-bottom: 1px solid var(--ink-black); padding-bottom: 0.2rem; }
-.article-page-container { max-width: 800px; margin: 6rem auto 4rem; background: var(--paper-card); padding: 4rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); position: relative; }
+.article-page-container { max-width: 880px; margin: 6rem auto 4rem; background: var(--paper-card); padding: 4rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); position: relative; }
 .article-page-container::before { content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: var(--ink-red); }
 .markdown-body h1 { font-family: 'Noto Serif JP', serif; border-bottom: 2px solid var(--ink-black); margin-bottom: 2rem; }
 .markdown-body h2 { font-family: 'Noto Serif JP', serif; border-bottom: 1px dashed rgba(26,26,26,0.5); margin: 2rem 0 1rem; }
-.markdown-body p { line-height: 2; margin-bottom: 1.5rem; text-align: justify; }
+.markdown-body { font-size: 1.05rem; letter-spacing: 0.015em; }
+.markdown-body p { line-height: 2.05; margin-bottom: 1.35rem; text-align: justify; word-break: break-word; }
+
+/* Article title (first paragraph in markdown output) */
+.markdown-body > p:first-child {
+    font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    text-align: left;
+    margin-bottom: 2.2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+}
+
+/* "→" callouts (generated by build.js) */
+.markdown-body p.md-callout {
+    position: relative;
+    background: rgba(139, 30, 40, 0.04);
+    border: 1px solid rgba(139, 30, 40, 0.18);
+    border-left: 4px solid rgba(139, 30, 40, 0.7);
+    padding: 1rem 1.1rem 1rem 1.2rem;
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+@media (max-width: 768px) {
+    .article-page-container { padding: 2.2rem 1.4rem; margin: 5.5rem 1rem 3rem; }
+    .markdown-body { font-size: 1rem; }
+    .markdown-body > p:first-child { font-size: 1.6rem; margin-bottom: 1.6rem; }
+    .markdown-body p.md-callout { padding: 0.9rem 1rem; }
+}
