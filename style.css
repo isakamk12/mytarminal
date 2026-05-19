@@ -343,139 +343,275 @@ a {
     background: rgba(26, 26, 26, 0.05);
 }
 
-/* About Grid */
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-}
-
-.about-card {
-    background: var(--paper-card);
-    border: 1px solid rgba(26, 26, 26, 0.1);
-    padding: 0.5rem;
+/* ====== Chapter 2: About (Evidence Board) ====== */
+.evidence-board-wrapper {
     position: relative;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
-}
-
-.about-card::before {
-    content: '';
-    position: absolute;
-    top: -5px; left: -5px; width: 20px; height: 20px;
-    border-top: 2px solid var(--ink-black);
-    border-left: 2px solid var(--ink-black);
-}
-
-.card-inner {
-    border: 1px dashed rgba(26, 26, 26, 0.2);
-    padding: 2.5rem;
-    height: 100%;
-}
-
-.card-inner i {
-    font-size: 2rem;
-    color: var(--ink-red);
-    margin-bottom: 1.5rem;
-}
-
-.card-inner h3 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-
-.card-inner p {
-    color: var(--ink-light);
-    font-size: 1rem;
-    line-height: 2;
-    text-align: left;
-    word-break: break-word;
-}
-
-/* Career Timeline (Chapter II) */
-.about-timeline {
-    grid-template-columns: 1fr;
-    max-width: 920px;
-    margin: 0 auto;
-    gap: 1.6rem;
-    position: relative;
-    padding-left: 1.2rem;
-}
-
-.about-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.5rem;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background: linear-gradient(to bottom, rgba(139, 30, 40, 0.5), rgba(26,26,26,0.15));
-}
-
-.about-timeline .about-card {
-    padding: 0;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-}
-
-.about-timeline .about-card::before {
-    display: none;
-}
-
-.about-timeline .card-inner {
-    position: relative;
-    background: var(--paper-card);
-    border: 1px solid rgba(26, 26, 26, 0.14);
-    border-left: 6px solid rgba(139, 30, 40, 0.55);
+    width: 100%;
+    height: 700px;
+    margin: 2rem auto;
+    background: #2a2520; /* 暗いコルクボード/壁のイメージ */
+    background-image: 
+        radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px),
+        linear-gradient(to right, rgba(0,0,0,0.3) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.3) 1px, transparent 1px);
+    background-size: 10px 10px, 100px 100px, 100px 100px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+    border: 10px solid #1a1714;
     border-radius: 4px;
-    box-shadow: 10px 10px 28px rgba(0,0,0,0.05);
-    padding: 2.1rem 2.2rem 2rem 4.2rem;
+    overflow: hidden;
 }
 
-.about-timeline .card-inner::before {
-    content: '';
+.evidence-board {
     position: absolute;
-    left: -2.05rem;
-    top: 2.25rem;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.evidence-threads {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.red-thread {
+    fill: none;
+    stroke: #b84040;
+    stroke-width: 2.5;
+    stroke-dasharray: 6 3;
+    filter: drop-shadow(2px 4px 2px rgba(0,0,0,0.5));
+}
+
+/* 共通アイテムスタイル */
+.evidence-item {
+    position: absolute;
+    width: 320px;
+    padding: 2rem 1.5rem 1.5rem;
+    background: var(--paper-card);
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.4);
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.4s;
+    transform-origin: top center;
+}
+
+.evidence-item:hover {
+    z-index: 10;
+    box-shadow: 10px 15px 25px rgba(0,0,0,0.6);
+}
+
+.evidence-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink-black);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.evidence-item h3 ruby {
+    ruby-position: over;
+    ruby-align: center;
+}
+
+.evidence-item h3 rt {
+    font-size: 0.72em;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.evidence-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--ink-light);
+    /* 初期状態では省略表示 */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+/* 個別スタイル：メモ風 */
+.memo-style {
+    background: #eaddc5;
+    border-radius: 2px;
+    border-left: 4px solid #b84040;
+}
+.memo-style .typewriter-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+.evidence-stamp.confidential {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    color: rgba(184, 64, 64, 0.2);
+    font-size: 2.8rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    border: 4px solid rgba(184, 64, 64, 0.2);
+    padding: 0.2rem 0.5rem;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 個別スタイル：ポラロイド・レポート風 */
+.polaroid-style {
+    background: #fcfbf9;
+    padding: 1rem 1rem 2rem;
+    border: 1px solid #ddd;
+}
+.polaroid-image-placeholder {
+    width: 100%;
+    height: 120px;
+    background: #1a1a1a;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    font-size: 3rem;
+    box-shadow: inset 0 0 20px #000;
+}
+
+/* 個別スタイル：切り抜き風 */
+.scrap-style {
+    background: #dcd7ce;
+    border: 1px dashed #999;
+}
+.evidence-clip {
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    width: 15px;
+    height: 35px;
+    border: 2px solid #888;
+    border-radius: 10px;
+    background: transparent;
+    transform: rotate(10deg);
+}
+
+/* 画鋲（ピン） */
+.pin {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: var(--paper-card);
-    border: 2px solid rgba(139, 30, 40, 0.8);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    background: #111;
+    box-shadow: inset -2px -2px 4px rgba(255,255,255,0.3), 3px 5px 5px rgba(0,0,0,0.6);
+    z-index: 5;
 }
-
-.about-timeline .card-inner i {
+.pin::after {
+    /* 針の影 */
+    content: '';
     position: absolute;
-    left: 1.25rem;
-    top: 2rem;
-    margin: 0;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(139, 30, 40, 0.06);
-    border: 1px solid rgba(139, 30, 40, 0.25);
+    top: 10px; left: 6px;
+    width: 2px; height: 10px;
+    background: rgba(0,0,0,0.3);
+    transform: rotate(30deg);
+}
+.red-pin { background: #b84040; }
+.blue-pin { background: #3b5998; }
+
+/* === Modal State (Active) === */
+.evidence-item.active {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    /* scaleを廃止し、純粋な中央配置のみにする */
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+    /* 代わりにwidthを広げる */
+    width: 90vw !important;
+    max-width: 550px !important;
+    z-index: 9999;
+    cursor: default;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    max-height: 85vh;
+    overflow-y: auto;
+    /* スムーズな幅変更のため追加 */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s;
+    /* カスタムスクロールバー */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.3) transparent;
 }
 
-.about-timeline .card-inner h3 {
-    font-size: 1.55rem;
+.evidence-item.active::-webkit-scrollbar {
+    width: 6px;
+}
+.evidence-item.active::-webkit-scrollbar-track {
+    background: transparent;
+}
+.evidence-item.active::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
 }
 
-.about-timeline .card-inner p {
-    font-size: 1.02rem;
+/* active時の文字サイズ調整 */
+.evidence-item.active h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
 }
 
-@media (max-width: 768px) {
-    .about-timeline { padding-left: 0.95rem; gap: 1.25rem; }
-    .about-timeline::before { left: 0.35rem; }
-    .about-timeline .card-inner { padding: 1.6rem 1.35rem 1.4rem 3.6rem; }
-    .about-timeline .card-inner::before { left: -1.7rem; top: 1.75rem; }
-    .about-timeline .card-inner i { left: 0.9rem; top: 1.5rem; width: 36px; height: 36px; font-size: 1.3rem; }
-    .about-timeline .card-inner h3 { font-size: 1.35rem; }
+.evidence-item.active .evidence-desc {
+    -webkit-line-clamp: unset; /* 全文表示 */
+    font-size: 1.05rem;
+    line-height: 1.8;
 }
+
+/* 背景暗転用オーバーレイ */
+#evidence-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(5px);
+}
+#evidence-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* tap-to-zoom image clone (reuses #evidence-overlay) */
+.zoom-image-clone {
+    z-index: 9999;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    object-fit: contain;
+    background: rgba(255,255,255,0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.zoom-image-clone.active {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 92vw !important;
+    max-width: 1100px !important;
+    height: auto !important;
+    max-height: 85vh !important;
+}
+
 
 /* Skills Container */
 .skills-container {
@@ -643,54 +779,202 @@ a {
     border: 1px solid rgba(0,0,0,0.1);
 }
 
-/* Index Cards */
-.index-grid {
+/* ====== Chapter 4: Bookshelf (Spine Facing) ====== */
+.shelf-grid {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* 本と本の隙間を狭く */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2rem 1rem;
+    background: linear-gradient(to bottom, transparent 75%, rgba(26,26,26,0.05) 95%, rgba(0,0,0,0.15) 100%);
+    border-bottom: 25px solid #4a443b; /* 分厚い木の棚板 */
+    box-shadow: inset 0 -15px 20px rgba(0,0,0,0.2), 0 10px 15px rgba(0,0,0,0.2);
+    align-items: flex-end;
+    perspective: 1500px;
+}
+
+.shelf-book-container {
+    width: 60px; /* 本の厚み（背表紙の幅） */
+    height: 380px; /* 本の高さ */
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+}
+
+.shelf-book-container:hover {
+    /* ホバーで手前に引き出される */
+    transform: translateZ(40px) translateY(-10px);
+    z-index: 10;
+}
+
+.shelf-book {
+    width: 60px; /* 本の幅（背表紙幅） */
+    height: 380px;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 本の各面（背表紙、表紙） */
+.shelf-spine, .shelf-cover {
+    position: absolute;
+    background: var(--paper-card);
+    border: 1px solid rgba(0,0,0,0.3);
+    backface-visibility: hidden; /* 裏側を透過して防ぐ */
+}
+
+/* 背表紙（初期状態で正面を向いている） */
+.shelf-spine {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    /* Z移動なし、そのまま前面に配置 */
+    transform: rotateY(0deg); 
+    background: linear-gradient(to right, #333, #222 10%, #333 90%, #111);
+    color: #e6dfcc;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5rem 0;
+    box-shadow: inset 2px 0 5px rgba(255,255,255,0.1), inset -2px 0 5px rgba(0,0,0,0.5);
+    border-radius: 3px;
+    border: 1px solid #000;
+    z-index: 2;
 }
 
-.index-card {
-    display: block;
-    border-bottom: 1px solid rgba(26, 26, 26, 0.2);
-    padding: 2rem;
-    transition: var(--transition);
-    position: relative;
-    background: transparent;
+/* 背表紙のテキスト（縦書き） */
+.spine-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #b84040; /* ink-red系 */
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
 }
 
-.index-card:hover {
-    background: rgba(139, 30, 40, 0.03);
-    padding-left: 3rem;
+.spine-title {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    height: 260px; /* 固定高で切り詰め */
+    overflow: hidden;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
-.index-meta {
+/* 表紙（初期状態では右側を向いている） */
+.shelf-cover {
+    width: 250px; /* 本の奥行き */
+    height: 380px;
+    left: 60px; /* 背表紙の右端に連結 */
+    top: 0;
+    /* 左端（背表紙との接点）を支点に、奥へ90度曲げることで右側面にする */
+    transform-origin: left center;
+    transform: rotateY(90deg); 
+    background: var(--paper-card);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* 表紙が開くアニメーション用 */
+    
+    /* 本棚にある時は完全に隠し、はみ出し（白い邪魔なもの）を防ぐ */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 表紙のデザイン */
+.cover-content {
+    padding: 2rem 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-left: 6px solid rgba(0,0,0,0.1); /* 背表紙の溝 */
+    background: var(--paper-card);
+}
+
+.shelf-cover .index-meta {
     font-family: 'Cormorant Garamond', serif;
     color: var(--ink-red);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-}
-
-.index-card h3 {
-    font-size: 1.5rem;
     margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(26,26,26,0.1);
+    padding-bottom: 0.5rem;
 }
 
-.index-card p {
-    color: var(--ink-light);
-    font-size: 0.95rem;
-}
-
-.read-more {
-    margin-top: 1.5rem;
+.shelf-cover h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
     color: var(--ink-black);
-    font-size: 0.9rem;
+}
+
+.shelf-cover p {
+    color: var(--ink-light);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
+.shelf-cover .read-more {
+    margin-top: auto;
+    font-weight: bold;
+    color: var(--ink-black);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+/* ====== Transition Classes ====== */
+#transition-book {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+/* クローンの時は表紙を表示する */
+#transition-book .shelf-cover {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 1: 画面手前に大きく引き出される */
+#transition-book.stage1 {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) translateZ(400px) scale(1.4) !important;
+}
+
+/* 2: クルッと回って表紙を見せる */
+#transition-book.stage2 .shelf-book {
+    transform: rotateY(-90deg) !important;
+}
+
+/* 3: 表紙がパカッと左に開く */
+#transition-book.stage3 .shelf-cover {
+    /* 初期状態(右向き: 90deg) から左向き(-90deg) へ180度パカッと開く。Z移動は不要 */
+    transform: rotateY(-90deg) !important;
+}
+
+#transition-flash {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-paper);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+#transition-flash.active {
+    opacity: 1;
 }
 
 .footer {
@@ -792,4 +1076,47 @@ a {
     .markdown-body { font-size: 1rem; }
     .markdown-body > p:first-child { font-size: 1.6rem; margin-bottom: 1.6rem; }
     .markdown-body p.md-callout { padding: 0.9rem 1rem; }
+}
+
+/* humanity images */
+.humanity.section-padding {
+    padding: 2.5rem 2rem 1.5rem;
+}
+.humanity-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+.humanity-gallery--compact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+}
+.humanity-gallery a {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.85);
+}
+.humanity-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    transform: translateZ(0);
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+.humanity-gallery a:hover img,
+.humanity-gallery a:focus-visible img {
+    transform: scale(1.01);
+    filter: saturate(1.05) contrast(1.02);
+}
+@media (max-width: 640px) {
+    .humanity-gallery,
+    .humanity-gallery--compact {
+        grid-template-columns: 1fr;
+    }
 }

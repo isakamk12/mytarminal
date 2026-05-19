@@ -58,6 +58,20 @@
             </div>
         </section>
 
+        <section class="humanity section-padding" aria-label="humanity">
+            <div class="humanity-gallery humanity-gallery--compact">
+                <a href="image/humanity-1.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-1.png" alt="humanity 1" loading="lazy" decoding="async">
+                </a>
+                <a href="image/humanity-2.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-2.png" alt="humanity 2" loading="lazy" decoding="async">
+                </a>
+                <a href="image/humanity-3.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-3.png" alt="humanity 3" loading="lazy" decoding="async">
+                </a>
+            </div>
+        </section>
+
         <!-- Chapter 1: Projects (Now First!) -->
         <section id="chapter-1" class="projects section-padding">
             <div class="chapter-header page-flip-scroll">
@@ -201,29 +215,65 @@
                 <h2 class="section-title">経歴<span>The Journey</span></h2>
             </div>
             
-                <div class="about-grid about-timeline">
-                    <div class="about-card page-flip-scroll" style="transition-delay: 0.1s;">
-                        <div class="card-inner">
-                            <i class="fa-solid fa-feather-pointed"></i>
-                            <h3>大学とメディア活動</h3>
-                            <p>ゼミが制度上三年かつ企画で様々な場所や企画が用意されていて、統計学とインタビュー手法を体験しながら学習し、ゼミと卒論では「知的衰弱の証明」をテーマに、米国の最重要刑務所の元囚人への取材を行いました、これに関してはその刑務所ではネットフリックスが見れる事に関しての詳細調査も兼ねています。授業で得た技術を部活動に転用し、特にコロナ以降は途絶えていたテレビ局・新聞社・イベント会社との関係も独力で再展開、出演が時間の関係で難しくそれ以外のことを全て出来る様に尽力しました。</p>
+            <div class="evidence-board-wrapper page-flip-scroll">
+                <div class="evidence-board">
+                    <!-- 赤い糸（SVG） -->
+                    <svg class="evidence-threads" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path class="red-thread" d="M 20,30 Q 50,10 75,35" />
+                        <path class="red-thread" d="M 20,30 Q 30,70 45,65" />
+                        <path class="red-thread" d="M 75,35 Q 65,80 45,65" />
+                    </svg>
+
+                    <!-- アイテム1: 10年間の無休介護 (古いメモ風) -->
+                    <div class="evidence-item memo-style" style="top: 10%; left: 8%; transform: rotate(-4deg);">
+                        <div class="pin"></div>
+                        <div class="evidence-content">
+                            <h3 class="typewriter-text"><ruby>10年間の無休介護<rt>Nursing Decade</rt></ruby></h3>
+                            <div class="evidence-stamp confidential">CONFIDENTIAL</div>
+                            <p class="evidence-desc">虐待等の関係で親がどちらも不在、その関係で病状が悪化したため父方母方の祖母二人を介護、10年間無休でバイトや中学の時はバイトが出来なかったので手伝いを続けながら対応してきました。事情込みでイタリア料理が得意になりました。突発的な事態に即応できるようメインは農業を進め、しかし肥料の高騰が当時から進んでいたため、リモートワークの概念が徐々に表れた中学時代から古いパソコンを使い勉強、更に修理・組み替えを自力で行って制作環境を確保し、PCでの絵や動画制作を積み上げ、介護が終わった為休み期間をフルに使い就活を漸く再開出来る様になりました。</p>
                         </div>
                     </div>
-                    <div class="about-card page-flip-scroll" style="transition-delay: 0.2s;">
-                        <div class="card-inner">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            <h3>技術と将来設計</h3>
-                            <p>動画編集をするにはまだ不足した能力が多く、テンプレート化や基礎徹底の副産物としてホームページはそれを基軸にアニメーションを制作、ゲーム会社や出版社での経験からVtuberアーカイブはパターンを増やし、ぶいすぽっ！の紹介ページに関してはゲーム風に仕上げました。YouTubeの初動の弱さを痛感し、Bot等から情報収集されやすい構造のサイトを制作してソースを公開することで、初動の維持を狙う設計を行いました。現在、元々の目的の関係でサイト更新は途絶えていますが、資料やドット絵の制作を継続し他にLive2Dモデルを下地だけ60キャラ程度のPSDまで用意したり、難しいのかあまり作られないちびキャラのLive2Dを作ってみたり、小説やイラスト活動を継続しつつ、書類の整理が最優先ではありますがその休憩として創作活動を進めています。</p>
+
+                    <!-- アイテム2: 大学とメディア活動 (ポラロイド・レポート風) -->
+                    <div class="evidence-item polaroid-style" style="top: 15%; left: 60%; transform: rotate(6deg);">
+                        <div class="pin red-pin"></div>
+                        <div class="evidence-content">
+                            <h3><ruby>大学とメディア活動<rt>Media Your Dear</rt></ruby></h3>
+                            <div class="polaroid-image-placeholder">
+                                <i class="fa-solid fa-feather-pointed"></i>
+                            </div>
+                            <p class="evidence-desc">ゼミが制度上三年かつ企画で様々な場所や企画が用意されていて、統計学とインタビュー手法を体験しながら学習し、ゼミと卒論では「知的衰弱の証明」をテーマに、米国の最重要刑務所の元囚人への取材を行いました、これに関してはその刑務所ではネットフリックスが見れる事に関しての詳細調査も兼ねています。授業で得た技術を部活動に転用し、特にコロナ以降は途絶えていたテレビ局・新聞社・イベント会社との関係も独力で再展開、出演が時間の関係で難しくそれ以外のことを全て出来る様に尽力しました。</p>
                         </div>
                     </div>
-                    <div class="about-card page-flip-scroll" style="transition-delay: 0.3s;">
-                        <div class="card-inner">
-                            <i class="fa-solid fa-shield-heart"></i>
-                            <h3>10年間の無休介護</h3>
-                            <p>虐待等の関係で親がどちらも不在、その関係で病状が悪化したため父方母方の祖母二人を介護、10年間無休でバイトや中学の時はバイトが出来なかったので手伝いを続けながら対応してきました。突発的な事態に即応できるようメインは農業を進め、しかし肥料の高騰が当時から進んでいたため、リモートワークの概念が徐々に表れた中学時代から古いパソコンを使い勉強、更に修理・組み替えを自力で行って制作環境を確保し、PCでの絵や動画制作を積み上げ、介護が終わった為休み期間をフルに使い就活を漸く再開出来る様になりました。</p>
+
+                    <!-- アイテム3: 技術と将来設計 (切り抜きスクラップ風) -->
+                    <div class="evidence-item scrap-style" style="top: 50%; left: 30%; transform: rotate(-2deg);">
+                        <div class="pin blue-pin"></div>
+                        <div class="evidence-content">
+                            <h3><ruby>技術と将来設計<rt>Tech and Steps</rt></ruby></h3>
+                            <div class="evidence-clip"></div>
+                            <p class="evidence-desc">動画編集をするにはまだ不足した能力が多く、テンプレート化や基礎徹底の副産物としてホームページはそれを基軸にアニメーションを制作、ゲーム会社や出版社での経験からVtuberアーカイブはパターンを増やし、ぶいすぽっ！の紹介ページに関してはゲーム風に仕上げました。YouTubeの初動の弱さを痛感し、Bot等から情報収集されやすい構造のサイトを制作してソースを公開することで、初動の維持を狙う設計を行いました。現在、元々の目的の関係でサイト更新は途絶えていますが、資料やドット絵の制作を継続し他にLive2Dモデルを下地だけ60キャラ程度のPSDまで用意したり、難しいのかあまり作られないちびキャラのLive2Dを作ってみたり、小説やイラスト活動を継続しつつ、書類の整理が最優先ではありますがその休憩として創作活動を進めています。</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="humanity section-padding" aria-label="経歴 追加アーカイブ">
+            <div class="humanity-gallery">
+                <a href="image/nursingdecade%20(1).png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/nursingdecade%20(1).png" alt="nursingdecade 1" loading="lazy" decoding="async">
+                </a>
+                <a href="image/nursingdecade%20(2).png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/nursingdecade%20(2).png" alt="nursingdecade 2" loading="lazy" decoding="async">
+                </a>
+                <a href="image/techandsteps%20(1).png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/techandsteps%20(1).png" alt="techandsteps 1" loading="lazy" decoding="async">
+                </a>
+                <a href="image/techandsteps%20(2).png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/techandsteps%20(2).png" alt="techandsteps 2" loading="lazy" decoding="async">
+                </a>
+            </div>
         </section>
 
         <!-- Chapter 3: Persona (Now Third) -->
@@ -232,13 +282,13 @@
                 <span class="chapter-num">Chapter III</span>
                 <h2 class="section-title">人物像<span>Operating Principles</span></h2>
             </div>
-             
+              
             <div class="skills-container">
                 <div class="persona-textbox page-flip-scroll">
                     <div class="persona-content">
                         <p>虐待や介護とか不穏な要素が多いが、それに対してかなり徹底した対策をしていて、弟妹もいるため共有・説明をかなり簡単なものにしている。</p>
                         <p>私は基本的にカラッとしたポジティブな人間である。創作中はネガティブを理解するために頑張ってネガティブを目指しているが苦手な位にポジティブである。また、後述する事情があってそのためにかなり理論や理屈的に考えてもいる。感情の理論的な説明としてもかなり便利だ。</p>
-                        <p>一番の問題である虐待の詳細は下記別資料にあるが、カウンセラーが聞いて鬱になったので推奨はしない。</p>
+                        <p>一番の問題である虐待の内容の一部は下記別資料にあるが、カウンセラーが聞いて鬱になったので推奨はしない。</p>
                         <p>先ず私は虐待に関しては怒りや不満こそあるが特別なものとは思っていない。ヘミングウェイ等の偉人と同じくらいだろう、時代がズレただけで昔なら起きた、あり得ないと否定する理由が無い。</p>
                         <p>虐待は過程的には間違っているが、別の視点から見れば三人とも暴力を常態化していないし、結果的には間違っていなかった。報復はしてはならないし、今後他人にもしてはいけないと折り合いをつけるためにこの様な納得をしている。</p>
                         <p>会議を詳細にする理由は他に全員父親が違うのもあり、若干傾向が違い、私が浮気相手の子供ではないので特に当たられそれを心配されることも含めて二人がよく考えてくれているものであり特別問題が起きている訳ではない。</p>
@@ -274,34 +324,124 @@
             <div class="chapter-header page-flip-scroll">
                 <span class="chapter-num">Chapter IV</span>
                 <h2 class="section-title">執筆物<span>The Chronicles</span></h2>
-                <p class="section-subtitle">2万冊の狂気と、10年の記録の保管庫</p>
+                <p class="section-subtitle">十万冊の狂気と、10年の記録の保管庫</p>
             </div>
             
-            <div class="index-grid">
-                <a href="story1.html" class="index-card page-flip-scroll">
-                    <div class="index-meta">FILE 01 // 7KB</div>
-                    <h3>俺は新卒を生贄に介護を続けてたぜ!</h3>
-                    <p>重度介護の実像と、絶望の中で磨かれた生存本能。就活用途を超えた生々しい記録。理不尽な世界でシステムを構築する根底の思考。</p>
-                    <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
-                </a>
-                <a href="story2.html" class="index-card page-flip-scroll" style="transition-delay: 0.1s;">
-                    <div class="index-meta">FILE 02 // 87KB</div>
-                    <h3>二十歳までに五万冊本読んだ話。</h3>
-                    <p>圧倒的なインプット量の根源と、情報摂取の軌跡を綴った長編大作。知識を喰らい尽くし、再構築し続ける人間の設計図。</p>
-                    <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
-                </a>
-                <a href="story3.html" class="index-card page-flip-scroll" style="transition-delay: 0.2s;">
-                    <div class="index-meta">FILE 03 // 9KB</div>
-                    <h3>三角関数或いは平坦球面</h3>
-                    <p>制約を感情ではなく条件として扱い、分解・補正・再設計で出力に変える思考の仕様書。こういう人間です、という前振りの先にある本編。</p>
-                    <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
-                </a>
-                <a href="story4.html" class="index-card page-flip-scroll" style="transition-delay: 0.3s;">
-                    <div class="index-meta">FILE 04 // 5KB</div>
-                    <h3>バイト・インターン録：現場で見えた「採用」と「継承」</h3>
-                    <p>工場・飲食・インターン・就活の入口で見えた構造を、再現可能な形で整理したメモ。努力の話ではなく、詰まりを仕組みに落とす話。</p>
-                    <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
-                </a>
+            <div class="shelf-grid">
+                <!-- Book 1 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story1.html">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">01</span>
+                            <span class="spine-title">俺は新卒を生贄に介護を続けてたぜ!</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 01 // 7KB</div>
+                                <h3>俺は新卒を生贄に介護を続けてたぜ!</h3>
+                                <p>重度介護の実像と、絶望の中で磨かれた生存本能。就活用途を超えた生々しい記録。理不尽な世界でシステムを構築する根底の思考。</p>
+                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story2.html" style="transition-delay: 0.1s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">02</span>
+                            <span class="spine-title">二十歳までに十万冊本読んだ話。</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 02 // 87KB</div>
+                                <h3>二十歳までに十万冊本読んだ話。</h3>
+                                <p>圧倒的なインプット量の根源と、情報摂取の軌跡を綴った長編大作。知識を喰らい尽くし、再構築し続ける人間の設計図。</p>
+                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story3.html" style="transition-delay: 0.2s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">03</span>
+                            <span class="spine-title">三角関数或いは平坦球面</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 03 // 9KB</div>
+                                <h3>三角関数或いは平坦球面</h3>
+                                <p>制約を感情ではなく条件として扱い、分解・補正・再設計で出力に変える思考の仕様書。こういう人間です、という前振りの先にある本編。</p>
+                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        <div class="shelf-page"></div>
+                    </div>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story4.html" style="transition-delay: 0.3s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">04</span>
+                            <span class="spine-title">バイト・インターン録：現場で見えた「採用」と「継承」</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 04 // 5KB</div>
+                                <h3>バイト・インターン録：現場で見えた「採用」と「継承」</h3>
+                                <p>工場・飲食・インターン・就活の入口で見えた構造を、再現可能な形で整理したメモ。努力の話ではなく、詰まりを仕組みに落とす話。</p>
+                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        <div class="shelf-page"></div>
+                    </div>
+                </div>
+
+                <!-- Book 5 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story5.html" style="transition-delay: 0.4s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">05</span>
+                            <span class="spine-title">BraveGroupを目指すにあたって：追加エピソード</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 05 // NEW</div>
+                                <h3>BraveGroupを目指すにあたって：追加エピソード</h3>
+                                <p>志望理由の“下の層”を補う追記。アーカイブ運用で鍛えた観測・仕様化・導線設計の癖を、複雑な組織でどう武器にするかの話。</p>
+                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        <div class="shelf-page"></div>
+                    </div>
+                </div>
+
+                <!-- Book 6 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story6.html" style="transition-delay: 0.5s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">06</span>
+                            <span class="spine-title">HTMLとかいうMVをコストカット+軽量化が可能な有能</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 06 // NEW</div>
+                                <h3>HTMLとかいうMVをコストカット+軽量化が可能な有能</h3>
+                                <p>HTML/CSS/JavaScriptを軽量プレビューとして使い、歌詞タイミングや座標・色・キーフレームをスクリプトで読み込めるように変換、AE/Unity/WebGLへ出力し、再入力・再配置・再同期を減らす設計。</p>
+                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        <div class="shelf-page"></div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>

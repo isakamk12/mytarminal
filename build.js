@@ -1,19 +1,32 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 
+function markdownToHtml(markdownPath) {
+    // Prefer local dependency (fast, offline) over `npx` (may download, can hang)
+    try {
+        // eslint-disable-next-line global-require
+        const { marked } = require('marked');
+        const md = fs.readFileSync(markdownPath, 'utf8');
+        return marked.parse(md, { mangle: false, headerIds: false });
+    } catch {
+        return execSync(`npx --yes marked "${markdownPath}"`, { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
+    }
+}
+
 const files = [
     { in: '俺は新卒を生贄に介護を続けてたぜ!.md', out: 'story1.html', title: '俺は新卒を生贄に介護を続けてたぜ!' },
     { in: '二十歳までに五万冊本読んだ話。.md', out: 'story2.html', title: '二十歳までに五万冊本読んだ話。' },
-    { in: '三角関数或いは平坦球面.md', out: 'story3.html', title: '三角関数或いは平坦球面' }
+    { in: '三角関数或いは平坦球面.md', out: 'story3.html', title: '三角関数或いは平坦球面' },
+    { in: 'BraveGroupを目指すにあたって：追加エピソード.md', out: 'story5.html', title: 'BraveGroupを目指すにあたって：追加エピソード' }
 ];
 
 const template = fs.readFileSync('article.html', 'utf8');
 
 files.forEach(f => {
+    const startedAt = Date.now();
     console.log(`Processing ${f.in}...`);
     try {
-        // use npx marked to convert markdown to html
-        let mdHtml = execSync(`npx --yes marked "${f.in}"`).toString();
+        let mdHtml = markdownToHtml(f.in);
         
         // 1. Remove all <img> tags to avoid note.com avatars/images
         mdHtml = mdHtml.replace(/<img[^>]*>/gi, '');
@@ -58,7 +71,8 @@ files.forEach(f => {
         outHtml = outHtml.replace('<title>Article | Akashi Isaka</title>', `<title>${f.title} | Akashi Isaka</title>`);
         
         fs.writeFileSync(f.out, outHtml);
-        console.log(`Created ${f.out}`);
+        const elapsedMs = Date.now() - startedAt;
+        console.log(`Created ${f.out} (${(elapsedMs / 1000).toFixed(2)}s)`);
     } catch (e) {
         console.error(`Failed to process ${f.in}`, e.message);
     }
