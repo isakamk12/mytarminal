@@ -21,72 +21,101 @@ document.addEventListener("DOMContentLoaded", () => {
     // Base language selector for future translations.
     const languageSelector = document.querySelector('[data-language-selector]');
     if (languageSelector) {
-        const savedLanguage = localStorage.getItem('archiveLanguage') || document.documentElement.lang || 'ja';
+        const normalizeLanguage = (lang) => {
+            const map = {
+                de: 'de-DE',
+                en: 'en-US'
+            };
+            return map[lang] || lang;
+        };
+
+        const rawSavedLanguage = localStorage.getItem('archiveLanguage') || document.documentElement.lang || 'ja';
+        const savedLanguage = normalizeLanguage(rawSavedLanguage);
         const availableOption = languageSelector.querySelector(`option[value="${savedLanguage}"]`);
         if (availableOption) {
             languageSelector.value = savedLanguage;
         }
 
         languageSelector.addEventListener('change', (event) => {
-            const selectedOption = event.target.selectedOptions[0];
-            const selectedLanguage = event.target.value;
+            const selectedOption = event.target.selectedOptions && event.target.selectedOptions[0];
+            const selectedLanguage = normalizeLanguage(event.target.value);
             localStorage.setItem('archiveLanguage', selectedLanguage);
 
-            if (selectedOption && selectedOption.dataset.url) {
-                window.location.href = selectedOption.dataset.url;
+            const targetHref = selectedOption && selectedOption.dataset && selectedOption.dataset.url;
+            if (targetHref) {
+                window.location.href = targetHref;
+                return;
             }
+            loadTranslations(selectedLanguage);
         });
-    }
 
-    // 2. Navbar glass effect on scroll
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 10, 15, 0.8)';
-                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
-            } else {
-                navbar.style.background = 'var(--glass-bg)';
-                navbar.style.boxShadow = 'none';
+        // ---------------- i18n logic ----------------
+        const hasI18nTargets = Boolean(document.querySelector('[data-i18n], [data-i18n-title]'));
+        let currentTranslations = {};
+
+        async function loadTranslations(lang) {
+            if (!hasI18nTargets) return;
+            try {
+                if (window.__LOCALES__ && window.__LOCALES__[lang]) {
+                    currentTranslations = window.__LOCALES__[lang];
+                    applyTranslations();
+                    document.documentElement.lang = lang;
+                    return;
+                }
+
+                const candidates = [
+                    `locales/${lang}.json`,
+                    `../locales/${lang}.json`,
+                    `../../locales/${lang}.json`
+                ];
+
+                let loaded = false;
+                for (const path of candidates) {
+                    const response = await fetch(path);
+                    if (response.ok) {
+                        currentTranslations = await response.json();
+                        loaded = true;
+                        break;
+                    }
+                }
+
+                if (!loaded) throw new Error("Locale not found");
+                applyTranslations();
+                document.documentElement.lang = lang;
+            } catch (err) {
+                console.error("Failed to load translations for", lang, err);
             }
-        });
-    }
-
-    // 3. Markdown rendering for article.html
-    const articleContainer = document.getElementById('markdown-content');
-    if (articleContainer) {
-        // Extract filename from URL query params (e.g. ?file=xxx.md)
-        const params = new URLSearchParams(window.location.search);
-        const fileName = params.get('file');
-        
-        // If there's no file specified, assume it's statically generated and do nothing
-        if (!fileName) {
-            return;
         }
 
-        // Set page title roughly based on filename without extension
-        document.title = fileName.replace('.md', '') + ' | Akashi Isaka';
+        function getNestedTranslation(obj, path) {
+            return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+        }
 
-        fetch(fileName)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+        function applyTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const translation = getNestedTranslation(currentTranslations, key);
+                if (translation) {
+                    if (el.tagName === 'TITLE') {
+                        document.title = translation;
+                    } else {
+                        el.innerHTML = translation; // using innerHTML in case of embedded br tags
+                    }
                 }
-                return response.text();
-            })
-            .then(text => {
-                // Parse markdown to HTML using marked.js
-                // Marked.js should be loaded in article.html
-                if (typeof marked !== 'undefined') {
-                    articleContainer.innerHTML = marked.parse(text);
-                } else {
-                    articleContainer.innerHTML = '<p class="error">Markdown parser is not loaded.</p>';
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching markdown:', error);
-                articleContainer.innerHTML = `<p class="error">ファイルの読み込みに失敗しました (${fileName})。サーバー環境で実行するか、ファイルが存在することを確認してください。</p>`;
             });
+            document.querySelectorAll('[data-i18n-title]').forEach(el => {
+                const key = el.getAttribute('data-i18n-title');
+                const translation = getNestedTranslation(currentTranslations, key);
+                if (translation) {
+                    el.setAttribute('title', translation);
+                }
+            });
+        }
+        
+        // Initial load (only when the page actually uses i18n keys)
+        if (hasI18nTargets) {
+            loadTranslations(savedLanguage);
+        }
     }
 
 
@@ -361,6 +390,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         overlayForZoom.addEventListener('click', () => {
             if (activeZoomClone) closeZoom();
+        });
+    }
+
+    // ===== Reading Progress Bar =====
+    const progressBar = document.querySelector('.reading-progress-bar');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            if (scrollHeight > 0) {
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            }
         });
     }
 });

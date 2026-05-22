@@ -1120,3 +1120,393 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================
+   Story Page Enhancements & Custom Scrollbars
+   ========================================== */
+
+/* 1. Global Custom Scrollbars using CSS variables */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb, var(--ink-red)) var(--scrollbar-track, var(--bg-paper));
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--scrollbar-track, var(--bg-paper));
+    border-left: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb, var(--ink-red));
+    border: 2px solid var(--scrollbar-track, var(--bg-paper));
+    border-radius: 5px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover, var(--ink-black));
+}
+
+/* Overwrite chat page and active overlay scrollbars to use variables */
+.evidence-item.active::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb, rgba(0,0,0,0.3));
+}
+
+/* 2. Reading Progress Indicator */
+.reading-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.03);
+    z-index: 10000;
+}
+
+.reading-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--scrollbar-thumb, var(--ink-red));
+    transition: width 0.08s ease-out;
+}
+
+/* 3. Paper Book Thickness Effect */
+.article-page-container {
+    max-width: 880px;
+    margin: 6rem auto 4rem;
+    background: var(--paper-card);
+    padding: 4.5rem 4rem;
+    position: relative;
+    border: 1px solid rgba(26, 26, 26, 0.07);
+    border-radius: 2px;
+    /* Multilayer book page shadows */
+    box-shadow: 
+        0 1px 1px rgba(0,0,0,0.06), 
+        0 8px 0 -4px var(--paper-card), 
+        0 8px 2px -3px rgba(0,0,0,0.1), 
+        0 16px 0 -8px var(--paper-card), 
+        0 16px 2px -7px rgba(0,0,0,0.1),
+        0 24px 30px rgba(0,0,0,0.08);
+}
+
+/* 4. Drop Cap for literary feel */
+.drop-cap {
+    font-family: 'Noto Serif JP', serif;
+    float: left;
+    font-size: 3.6rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-right: 0.6rem;
+    margin-top: 0.2rem;
+    color: var(--scrollbar-thumb, var(--ink-red));
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.04);
+}
+
+/* 5. Handwritten Callouts / Marginalia */
+.markdown-body p.md-callout, .marginalia-note {
+    position: relative;
+    background: rgba(139, 30, 40, 0.02);
+    border: 1px dashed rgba(139, 30, 40, 0.2);
+    border-left: 4px solid var(--scrollbar-thumb, var(--ink-red));
+    padding: 1.1rem 1.2rem;
+    margin: 1.8rem 0;
+    border-radius: 3px;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.02);
+    transform: rotate(-0.3deg); /* Vintage hand-slanted note angle */
+    transition: transform 0.3s ease;
+}
+
+.markdown-body p.md-callout:hover, .marginalia-note:hover {
+    transform: rotate(0deg) scale(1.005);
+}
+
+.markdown-body p.md-callout::before, .marginalia-note::before {
+    content: '✍️';
+    position: absolute;
+    top: -12px;
+    right: 15px;
+    font-size: 1.1rem;
+    opacity: 0.75;
+}
+
+/* 6. Qualifications & Custom Lists Cards */
+.qualification-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2.2rem 0;
+}
+
+.qualification-card {
+    background: rgba(0,0,0,0.01);
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    padding: 1.5rem;
+    border-radius: 4px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.qualification-card:hover {
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
+    border-color: var(--scrollbar-thumb, var(--ink-red));
+}
+
+.qualification-card h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink-black);
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.qualification-card h4 i {
+    color: var(--scrollbar-thumb, var(--ink-red));
+}
+
+.qualification-card p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--ink-light);
+    margin: 0 !important;
+}
+
+/* 7. Checklist Grids for industrial lists */
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.85rem;
+    margin: 1.8rem 0;
+}
+
+.checklist-item {
+    background: rgba(0,0,0,0.015);
+    border: 1px solid rgba(26, 26, 26, 0.07);
+    padding: 0.85rem 1.1rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: var(--transition);
+}
+
+.checklist-item:hover {
+    background: #fff;
+    border-color: var(--scrollbar-thumb, var(--ink-red));
+    box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+    transform: translateY(-1px);
+}
+
+.checklist-item i {
+    color: var(--scrollbar-thumb, var(--ink-red));
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.checklist-item span {
+    font-size: 0.95rem;
+    color: var(--ink-black);
+    line-height: 1.4;
+}
+
+/* 8. Badge list (Agricultural animals) */
+.badge-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.6rem 0;
+}
+
+.badge-item {
+    background: rgba(0,0,0,0.02);
+    border: 1px solid rgba(26,26,26,0.08);
+    padding: 0.4rem 0.95rem;
+    font-size: 0.88rem;
+    border-radius: 20px;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--transition);
+}
+
+.badge-item:hover {
+    background: #fff;
+    border-color: var(--scrollbar-thumb, var(--ink-red));
+    color: var(--ink-black);
+    transform: translateY(-1px);
+}
+
+/* 9. Transcript Board for Chat Logs */
+.transcript-board {
+    border-left: 2px dashed rgba(26, 26, 26, 0.12);
+    padding-left: 1.8rem;
+    margin: 2.2rem 0;
+}
+
+.chat-message {
+    transition: transform 0.2s ease;
+}
+.chat-message:hover {
+    transform: translateX(2px);
+}
+.chat-message.user:hover {
+    transform: translateX(-2px);
+}
+
+/* 10. Page-to-Page Bookmark Navigation */
+.story-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5rem;
+    padding-top: 2.2rem;
+    border-top: 1px double rgba(26, 26, 26, 0.15);
+}
+
+.story-nav-btn {
+    display: flex;
+    flex-direction: column;
+    max-width: 42%;
+    transition: var(--transition);
+}
+
+.story-nav-btn.prev {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.story-nav-btn.next {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.story-nav-label {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.3rem;
+}
+
+.story-nav-title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink-black);
+    line-height: 1.4;
+    transition: var(--transition);
+}
+
+.story-nav-btn:hover .story-nav-title {
+    color: var(--scrollbar-thumb, var(--ink-red));
+}
+
+.story-nav-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    background: var(--paper-card);
+    color: var(--ink-light);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.story-nav-back:hover {
+    color: #fff;
+    background: var(--scrollbar-thumb, var(--ink-red));
+    border-color: var(--scrollbar-thumb, var(--ink-red));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 30, 40, 0.15);
+}
+
+/* 11. Visual Diagram mapping cards (HTML MV Story) */
+.flow-diagram-container {
+    margin: 2.2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.flow-card {
+    background: rgba(0,0,0,0.01);
+    border: 1px solid rgba(26, 26, 26, 0.08);
+    padding: 1.5rem 1.2rem;
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    transition: var(--transition);
+}
+
+.flow-card:hover {
+    background: #fff;
+    border-color: var(--scrollbar-thumb, var(--ink-red));
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.flow-card-icon {
+    font-size: 2rem;
+    color: var(--scrollbar-thumb, var(--ink-red));
+    margin-bottom: 0.8rem;
+}
+
+.flow-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ink-black);
+}
+
+.flow-card-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--ink-light);
+}
+
+.flow-arrow {
+    position: absolute;
+    top: 50%;
+    right: -0.75rem;
+    transform: translateY(-50%) translateZ(0);
+    color: rgba(26,26,26,0.3);
+    font-size: 1rem;
+    z-index: 2;
+}
+
+@media (max-width: 900px) {
+    .flow-diagram-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .flow-arrow {
+        top: auto;
+        bottom: -1rem;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .article-page-container {
+        padding: 2.5rem 1.5rem;
+    }
+    .story-navigation {
+        margin-top: 3.5rem;
+    }
+    .story-nav-title {
+        font-size: 0.85rem;
+    }
+}

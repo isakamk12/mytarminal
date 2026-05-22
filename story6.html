@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" style="--scrollbar-thumb: #d9822b; --scrollbar-track: #fafaf9; --scrollbar-thumb-hover: #b56317;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>共通中間形式でMV演出を再利用する | Akashi Isaka Archives</title>
+    <title data-i18n="story6.page_title">共通中間形式でMV演出を再利用する | Akashi Isaka Archives</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,17 +15,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="article-bg">
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar"></div>
+    </div>
     <nav class="navbar">
         <div class="nav-content">
             <h1 class="logo">A. ISAKA <span>ARCHIVES</span></h1>
             <ul class="nav-links">
-                <li><a href="index.html#chapter-4"><i class="fa-solid fa-arrow-left"></i> 目次に戻る</a></li>
+                <li><a href="index.html#chapter-4"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="story6.back_to_index_title">目次に戻る</span></a></li>
             </ul>
-            <label class="language-selector" aria-label="表示言語">
+                        <label class="language-selector" aria-label="表示言語">
                 <i class="fa-solid fa-language" aria-hidden="true"></i>
                 <select data-language-selector>
-                    <option value="ja" data-url="">日本語</option>
-                    <option value="en" data-url="">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="en-US">English (US)</option>
+                    <option value="en-GB">English (UK)</option>
+                    <option value="fr-FR">Français (France)</option>
+                    <option value="fr-CA">Français (Canada)</option>
+                    <option value="es">Español</option>
+                    <option value="pt-PT">Português (Portugal)</option>
+                    <option value="pt-BR">Português (Brasil)</option>
+                    <option value="de-DE">Deutsch</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="ko">한국어</option>
                 </select>
             </label>
         </div>
@@ -34,31 +47,42 @@
     <main class="page-flip-load">
         <div class="article-page-container">
             <article class="markdown-body">
-                <h1>軽い環境からMV演出を育てる</h1>
+                <h1 data-i18n="story6.title">軽い環境からMV演出を育てる</h1>
 
-                <p>MVの演出を作るとき、最初からAfter EffectsやUnityの重い制作環境に入ると、修正のたびに確認も調整も大きくなる。歌詞の出るタイミング、位置、色、動き方、素材の重なり方。そういう細かい判断を、最終工程に近い場所で何度もやり直すと、失敗そのものが大きくなる。</p>
+                <p><span class="drop-cap" data-i18n="story6.p1_dropcap">M</span><span data-i18n="story6.p1_rest">Vの演出を作るとき、最初からAfter EffectsやUnityの重い制作環境に入ると、修正のたびに確認も調整も大きくなる。歌詞の出るタイミング、位置、色、動き方、素材の重なり方。そういう細かい判断を、最終工程に近い場所で何度もやり直すと、失敗そのものが大きくなる。</span></p>
 
-                <p>そこで、HTML/CSS/JavaScriptを軽量なプレビュー環境として使う。ブラウザ上で歌詞、背景、図形、色、トランジション、グリッチ、ズーム、揺れ、スクロール同期、音声同期を先に確認する。ここで大事なのは、HTMLで完成品を作り切ることではない。演出の方向性を小さく試し、人が見て直し、AIが整理し、また人が判断する。その段階的な介入によって、失敗を早い段階で見つける。</p>
+                <p data-i18n="story6.p2">そこで、HTML/CSS/JavaScriptを軽量なプレビュー環境として使う。ブラウザ上で歌詞、背景、図形、色、トランジション、グリッチ、ズーム、揺れ、スクロール同期、音声同期を先に確認する。ここで大事なのは、HTMLで完成品を作り切ることではない。演出の方向性を小さく試し、人が見て直し、AIが整理し、また人が判断する。その段階的な介入によって、失敗を早い段階で見つける。</p>
 
-                <p>確定した演出は、歌詞、タイミング、座標、色、透明度、エフェクト、アニメーション、素材参照、レイヤー順、イージング、キーフレームとして整理する。これをJSONなどの<strong>共通中間形式</strong>、つまりIRとして保存する。作っているのは単なるHTML製MVではなく、MV演出の設計データである。</p>
+                <p data-i18n="story6.p3">確定した演出は、歌詞、タイミング、座標、色、透明度、エフェクト、アニメーション、素材参照、レイヤー順、イージング、キーフレームとして整理する。これをJSONなどの<strong>共通中間形式</strong>、つまりIRとして保存する。作っているのは単なるHTML製MVではなく、MV演出の設計データである。</p>
 
-                <p>この共通中間形式があると、同じ演出を別の環境へ展開しやすくなる。After EffectsではAE ExtendScript（JSX）を使い、Composition、Text Layer、Shape Layer、Footage、Marker、Keyframe、Expression、Effect、Pre-compose、エフェクトパラメータへ変換する。UnityではC#で読み込み、Timeline、PlayableAsset、PlayableDirector、TextMeshPro、Canvas、RectTransform、Animator、Particle System、AudioSource、Addressables、Prefabへ接続する。WebGLではThree.js、PixiJS、Canvas、WebGL Shader、Texture、Framebuffer、Post Effect、GPU Particleへ置き換える。</p>
+                <p data-i18n="story6.p4">この共通中間形式があると、同じ演出を別の環境へ展開しやすくなる。After EffectsではAE ExtendScript（JSX）を使い、Composition、Text Layer、Shape Layer、Footage、Marker、Keyframe、Expression、Effect、Pre-compose、エフェクトパラメータへ変換する。UnityではC#で読み込み、Timeline、PlayableAsset、PlayableDirector、TextMeshPro、Canvas、RectTransform、Animator、Particle System、AudioSource、Addressables、Prefabへ接続する。WebGLではThree.js、PixiJS、Canvas、WebGL Shader、Texture、Framebuffer、Post Effect、GPU Particleへ置き換える。</p>
 
-                <p>注意しなければいけないのは、After EffectsがHTML/CSS/JavaScriptをブラウザのように読むわけではないことだ。AE ScriptにDOMレンダラやCSSレイアウトエンジンがあるわけではない。HTML側で確認した演出情報を、AEが扱えるレイヤー、マーカー、キーフレーム、エフェクト設定へ変換する。ここを曖昧にすると、技術的には別物を同じもののように話していることになる。</p>
+                <p data-i18n="story6.p5">注意しなければいけないのは、After EffectsがHTML/CSS/JavaScriptをブラウザのように読むわけではないことだ。AE ScriptにDOMレンダラやCSSレイアウトエンジンがあるわけではない。HTML側で確認した演出情報を、AEが扱えるレイヤー、マーカー、キーフレーム、エフェクト設定へ変換する。ここを曖昧にすると、技術的には別物を同じもののように話していることになる。</p>
 
-                <p>この仕組みの価値は「AIで全部を自動化する」ことではない。むしろ逆で、人が判断する場所を残しながら、AIが段階的に介入できるようにすることにある。いきなり最終工程に入らず、軽い環境で試し、ズレを見つけ、演出データとして整え、必要な出力先へ移す。そうすれば、タイミングのズレ、座標のズレ、素材配置のズレ、エフェクト順のズレを、後工程まで持ち越しにくくなる。</p>
+                <p data-i18n="story6.p6">この仕組みの価値は「AIで全部を自動化する」ことではない。むしろ逆で、人が判断する場所を残しながら、AIが段階的に介入できるようにすることにある。いきなり最終工程に入らず、軽い環境で試し、ズレを見つけ、演出データとして整え、必要な出力先へ移す。そうすれば、タイミングのズレ、座標のズレ、素材配置のズレ、エフェクト順のズレを、後工程まで持ち越しにくくなる。</p>
 
-                <p>軽い環境で動くことは、人材面でも大きい。高性能PCや専用ソフトを持っていなくても、ブラウザが動けば演出の試作や確認に参加できる。容量やスペックに縛られにくいので、制作環境に入る前の段階で、誰がタイミング感覚を持っているか、誰が画面構成を考えられるか、誰が素材整理に向いているかを見やすい。人材発掘、試作、教育、分業、運用のどこでも使える入口になる。</p>
+                <p data-i18n="story6.p7">軽い環境で動くことは、人材面でも大きい。高性能PCや専用ソフトを持っていなくても、ブラウザが動けば演出の試作や確認に参加できる。容量やスペックに縛られにくいので、制作環境に入る前の段階で、誰がタイミング感覚を持っているか、誰が画面構成を考えられるか、誰が素材整理に向いているかを見やすい。人材発掘、試作、教育、分業、運用のどこでも使える入口になる。</p>
 
-                <p>つまり、これは作業を雑に短縮するための仕組みではない。同じ演出をAE、Unity、WebGLで毎回作り直すのではなく、共通中間形式を軸にして、確認、修正、展開の流れを整理する。軽い場所で試し、失敗を小さくし、必要な環境へ正確に渡す。そのための制作フローである。</p>
+                <p data-i18n="story6.p8">つまり、これは作業を雑に短縮するための仕組みではない。同じ演出をAE、Unity、WebGLで毎回作り直すのではなく、共通中間形式を軸にして、確認、修正、展開の流れを整理する。軽い場所で試し、失敗を小さくし、必要な環境へ正確に渡す。そのための制作フローである。</p>
+            
+                <div class="story-navigation">
+                    <a href="story5.html" class="story-nav-btn prev" data-i18n-title="story6.nav_prev_title"><span class="story-nav-label">Prev</span><span class="story-nav-title" data-i18n="story6.nav_prev_title">BraveGroupを目指すにあたって</span>
+                    </a>
+                    <a href="index.html#chapter-4" class="story-nav-back" data-i18n-title="story6.back_to_index_title" title="目次に戻る">
+                        <i class="fa-solid fa-book-open"></i>
+                    </a>
+                    <a href="story1.html" class="story-nav-btn next" data-i18n-title="story6.nav_next_title"><span class="story-nav-label">Next</span><span class="story-nav-title" data-i18n="story6.nav_next_title">俺は新卒を生贄に介護を続けてたぜ!</span>
+                    </a>
+                </div>
             </article>
         </div>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 Akashi Isaka. Handcrafted with resilience.</p>
+        <p data-i18n="story6.p9">&copy; 2026 Akashi Isaka. Handcrafted with resilience.</p>
     </footer>
 
+    <script src="locales-bundle.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

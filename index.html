@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
+﻿<!DOCTYPE html>
+<html lang="ja" style="--scrollbar-thumb: var(--ink-black); --scrollbar-thumb-hover: var(--ink-red);">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,16 +21,26 @@
         <div class="nav-content">
             <h1 class="logo">A. ISAKA <span>ARCHIVES</span></h1>
             <ul class="nav-links">
-                <li><a href="#chapter-1">第一章：実績</a></li>
-                <li><a href="#chapter-2">第二章：経歴</a></li>
-                <li><a href="#chapter-3">第三章：人物</a></li>
-                <li><a href="#chapter-4">執筆物</a></li>
+                <li><a href="#chapter-1" data-i18n="nav.projects">第一章：実績</a></li>
+                <li><a href="#chapter-2" data-i18n="nav.journey">第二章：経歴</a></li>
+                <li><a href="#chapter-3" data-i18n="nav.persona">第三章：人物</a></li>
+                <li><a href="#chapter-4" data-i18n="nav.chronicles">執筆物</a></li>
             </ul>
             <label class="language-selector" aria-label="表示言語">
                 <i class="fa-solid fa-language" aria-hidden="true"></i>
                 <select data-language-selector>
-                    <option value="ja" data-url="">日本語</option>
-                    <option value="en" data-url="">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="en-US">English (US)</option>
+                    <option value="en-GB">English (UK)</option>
+                    <option value="fr-FR">Français (France)</option>
+                    <option value="fr-CA">Français (Canada)</option>
+                    <option value="es">Español</option>
+                    <option value="pt-PT">Português (Portugal)</option>
+                    <option value="pt-BR">Português (Brasil)</option>
+                    <option value="de-DE">Deutsch</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="ko">한국어</option>
                 </select>
             </label>
         </div>
@@ -43,16 +53,16 @@
                 <div class="title-border">
                     <span class="badge">UI Design・App Development・Data Archive</span>
                     <h1 class="hero-title">
-                        もう少しだけ自分解説<br>
-                        <span>特設ページ</span>
+                        <span data-i18n="hero.title_sub1">もう少しだけ自分解説</span><br>
+                        <span data-i18n="hero.title_sub2">特設ページ</span>
                     </h1>
                     <div class="title-divider"></div>
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">
                         制約を条件として分解し、設計と試行で出力へ変換する人間です。Web構築、マクロツール制作、資料アーカイブ、Live2D制作まで、状況に応じて手段を組み替えながら形にしてきました。
                     </p>
                     <div class="hero-actions">
-                        <a href="#chapter-1" class="btn btn-gold">実績を紐解く</a>
-                        <a href="#chapter-4" class="btn btn-ghost">手記を読む</a>
+                        <a href="#chapter-1" class="btn btn-gold" data-i18n="hero.btn_projects">実績を紐解く</a>
+                        <a href="#chapter-4" class="btn btn-ghost" data-i18n="hero.btn_chronicles">手記を読む</a>
                     </div>
                 </div>
             </div>
@@ -63,11 +73,11 @@
                 <a href="image/humanity-1.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
                     <img src="image/humanity-1.png" alt="humanity 1" loading="lazy" decoding="async">
                 </a>
-                <a href="image/humanity-2.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
-                    <img src="image/humanity-2.png" alt="humanity 2" loading="lazy" decoding="async">
+                <a href="image/humanity-4.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-4.png" alt="humanity 4" loading="lazy" decoding="async">
                 </a>
-                <a href="image/humanity-3.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
-                    <img src="image/humanity-3.png" alt="humanity 3" loading="lazy" decoding="async">
+                <a href="image/humanity-5.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-5.png" alt="humanity 5" loading="lazy" decoding="async">
                 </a>
             </div>
         </section>
@@ -76,7 +86,7 @@
         <section id="chapter-1" class="projects section-padding">
             <div class="chapter-header page-flip-scroll">
                 <span class="chapter-num">Chapter I</span>
-                <h2 class="section-title">制作実績<span>Recent Projects</span></h2>
+                <h2 class="section-title"><span data-i18n="ch1.title">制作実績</span><span data-i18n="ch1.subtitle">Recent Projects</span></h2>
             </div>
 
             <div class="book-grid">
@@ -86,15 +96,15 @@
                         <div class="book-front">
                             <div class="book-cover-content">
                                 <i class="fa-solid fa-users"></i>
-                                <h3>VTuberアーカイブ</h3>
+                                <h3 data-i18n="ch1.b1.title">VTuberアーカイブ</h3>
                                 <span>Vol. 1</span>
                             </div>
                         </div>
                         <div class="book-inside">
                             <div class="book-page-content">
                                 <h4>VTuber Archive</h4>
-                                <p>複数事務所・タレント情報の収集、分類、構造設計、継続更新を実施している大規模アーカイブ。</p>
-                                <a href="https://isakamk12.github.io/vtuberarchive/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを閲覧する</a>
+                                <p data-i18n="ch1.b1.desc">複数事務所・タレント情報の収集、分類、構造設計、継続更新を実施している大規模アーカイブ。</p>
+                                <a href="https://isakamk12.github.io/vtuberarchive/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b1.link">サイトを閲覧する</span></a>
                             </div>
                         </div>
                     </div>
@@ -106,17 +116,17 @@
                         <div class="book-front">
                             <div class="book-cover-content">
                                 <i class="fa-solid fa-book-journal-whills"></i>
-                                <h3>外部作品紹介</h3>
+                                <h3 data-i18n="ch1.b2.title">外部作品紹介</h3>
                                 <span>Vol. 2</span>
                             </div>
                         </div>
                         <div class="book-inside">
                             <div class="book-page-content">
                                 <h4>Another Author</h4>
-                                <p>資料整理系サイト。コンテンツの分類・整理およびフォーマット設計、情報構造の最適化を実施。外部アーカイブ企画として恋愛ゲームアーカイブも追加。</p>
+                                <p data-i18n="ch1.b2.desc">資料整理系サイト。コンテンツの分類・整理およびフォーマット設計、情報構造の最適化を実施。外部アーカイブ企画として恋愛ゲームアーカイブも追加。</p>
                                 <div class="book-links">
-                                    <a href="https://isakamk12.github.io/anotherauthor/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを閲覧する</a>
-                                    <a href="https://isakamk12.github.io/lovecome/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> クセツヨラブコメ</a>
+                                    <a href="https://isakamk12.github.io/anotherauthor/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b1.link">サイトを閲覧する</span></a>
+                                    <a href="https://isakamk12.github.io/lovecome/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b2.link2">クセツヨラブコメ</span></a>
                                 </div>
                             </div>
                         </div>
@@ -129,15 +139,15 @@
                         <div class="book-front">
                             <div class="book-cover-content">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <h3>事件備忘録</h3>
+                                <h3 data-i18n="ch1.b3.title">事件備忘録</h3>
                                 <span>Vol. 3</span>
                             </div>
                         </div>
                         <div class="book-inside">
                             <div class="book-page-content">
                                 <h4>Mistery Area</h4>
-                                <p>資料整理系サイト。コンテンツの分類・整理およびフォーマット設計、情報構造の最適化を実施。</p>
-                                <a href="https://isakamk12.github.io/misteryerea/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを閲覧する</a>
+                                <p data-i18n="ch1.b3.desc">資料整理系サイト。コンテンツの分類・整理およびフォーマット設計、情報構造の最適化を実施。</p>
+                                <a href="https://isakamk12.github.io/misteryerea/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b1.link">サイトを閲覧する</span></a>
                             </div>
                         </div>
                     </div>
@@ -149,15 +159,15 @@
                         <div class="book-front">
                             <div class="book-cover-content">
                                 <i class="fa-solid fa-dog"></i>
-                                <h3>犬ブログ-ポメモリー</h3>
+                                <h3 data-i18n="ch1.b4.title">犬ブログ-ポメモリー</h3>
                                 <span>Vol. 4</span>
                             </div>
                         </div>
                         <div class="book-inside">
                             <div class="book-page-content">
                                 <h4>Dog Web</h4>
-                                <p>ビジュアル・軽量設計サイト。視認性・軽量性を重視したUI設計およびキャラクター表現。</p>
-                                <a href="https://isakamk12.github.io/dogweb/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを閲覧する</a>
+                                <p data-i18n="ch1.b4.desc">ビジュアル・軽量設計サイト。視認性・軽量性を重視したUI設計およびキャラクター表現。</p>
+                                <a href="https://isakamk12.github.io/dogweb/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b1.link">サイトを閲覧する</span></a>
                             </div>
                         </div>
                     </div>
@@ -169,15 +179,15 @@
                         <div class="book-front">
                             <div class="book-cover-content">
                                 <i class="fa-solid fa-wand-magic-sparkles"></i>
-                                <h3>アニメーション特化</h3>
+                                <h3 data-i18n="ch1.b5.title">アニメーション特化</h3>
                                 <span>Vol. 5</span>
                             </div>
                         </div>
                         <div class="book-inside">
                             <div class="book-page-content">
                                 <h4>Tarminal Site</h4>
-                                <p>自分の作品アーカイブサイト。アニメーションを用いた演出設計および導線強化に特化。</p>
-                                <a href="https://isakamk12.github.io/isakatarminalsite/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> サイトを閲覧する</a>
+                                <p data-i18n="ch1.b5.desc">自分の作品アーカイブサイト。アニメーションを用いた演出設計および導線強化に特化。</p>
+                                <a href="https://isakamk12.github.io/isakatarminalsite/" target="_blank" style="margin-top:auto; font-weight:bold; border-bottom: 1px solid var(--ink-red); display:inline-block; align-self:flex-start; color:var(--ink-red); padding-bottom: 2px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b1.link">サイトを閲覧する</span></a>
                             </div>
                         </div>
                     </div>
@@ -189,17 +199,17 @@
                         <div class="book-front">
                             <div class="book-cover-content">
                                 <i class="fa-solid fa-link"></i>
-                                <h3>URLまとめ</h3>
+                                <h3 data-i18n="ch1.b6.title">URLまとめ</h3>
                                 <span>Vol. 6</span>
                             </div>
                         </div>
                         <div class="book-inside">
                             <div class="book-page-content">
                                 <h4>Dozまとめ / Wiki</h4>
-                                <p>VTuberアーカイブで企画ものを加えるために試験的に作ったまとめ＋ゲームのバグ修正MOD向けのバグチェック用Wiki。</p>
+                                <p data-i18n="ch1.b6.desc">VTuberアーカイブで企画ものを加えるために試験的に作ったまとめ＋ゲームのバグ修正MOD向けのバグチェック用Wiki。</p>
                                 <div class="book-links">
-                                    <a href="https://isakamk12.github.io/Dozmatome/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> まとめを見る</a>
-                                    <a href="https://isakamk12.github.io/Lobotomycorpwiki/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> LCBFwikiを見る</a>
+                                    <a href="https://isakamk12.github.io/Dozmatome/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b6.link1">まとめを見る</span></a>
+                                    <a href="https://isakamk12.github.io/Lobotomycorpwiki/" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="ch1.b6.link2">LCBFwikiを見る</span></a>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +222,7 @@
         <section id="chapter-2" class="about section-padding">
             <div class="chapter-header page-flip-scroll">
                 <span class="chapter-num">Chapter II</span>
-                <h2 class="section-title">経歴<span>The Journey</span></h2>
+                <h2 class="section-title"><span data-i18n="ch2.title">経歴</span><span data-i18n="ch2.subtitle">The Journey</span></h2>
             </div>
             
             <div class="evidence-board-wrapper page-flip-scroll">
@@ -228,9 +238,9 @@
                     <div class="evidence-item memo-style" style="top: 10%; left: 8%; transform: rotate(-4deg);">
                         <div class="pin"></div>
                         <div class="evidence-content">
-                            <h3 class="typewriter-text"><ruby>10年間の無休介護<rt>Nursing Decade</rt></ruby></h3>
+                            <h3 class="typewriter-text"><ruby data-i18n="ch2.i1.title">10年間の無休介護<rt data-i18n="ch2.i1.rt">Nursing Decade</rt></ruby></h3>
                             <div class="evidence-stamp confidential">CONFIDENTIAL</div>
-                            <p class="evidence-desc">虐待等の関係で親がどちらも不在、その関係で病状が悪化したため父方母方の祖母二人を介護、10年間無休でバイトや中学の時はバイトが出来なかったので手伝いを続けながら対応してきました。事情込みでイタリア料理が得意になりました。突発的な事態に即応できるようメインは農業を進め、しかし肥料の高騰が当時から進んでいたため、リモートワークの概念が徐々に表れた中学時代から古いパソコンを使い勉強、更に修理・組み替えを自力で行って制作環境を確保し、PCでの絵や動画制作を積み上げ、介護が終わった為休み期間をフルに使い就活を漸く再開出来る様になりました。</p>
+                            <p class="evidence-desc" data-i18n="ch2.i1.desc">虐待等の関係で親がどちらも不在、その関係で病状が悪化したため父方母方の祖母二人を介護、10年間無休でバイトや中学の時はバイトが出来なかったので手伝いを続けながら対応してきました。事情込みでイタリア料理が得意になりました。突発的な事態に即応できるようメインは農業を進め、しかし肥料の高騰が当時から進んでいたため、リモートワークの概念が徐々に表れた中学時代から古いパソコンを使い勉強、更に修理・組み替えを自力で行って制作環境を確保し、PCでの絵や動画制作を積み上げ、介護が終わった為休み期間をフルに使い就活を漸く再開出来る様になりました。</p>
                         </div>
                     </div>
 
@@ -238,11 +248,11 @@
                     <div class="evidence-item polaroid-style" style="top: 15%; left: 60%; transform: rotate(6deg);">
                         <div class="pin red-pin"></div>
                         <div class="evidence-content">
-                            <h3><ruby>大学とメディア活動<rt>Media Your Dear</rt></ruby></h3>
+                            <h3><ruby data-i18n="ch2.i2.title">大学とメディア活動<rt data-i18n="ch2.i2.rt">Media Your Dear</rt></ruby></h3>
                             <div class="polaroid-image-placeholder">
                                 <i class="fa-solid fa-feather-pointed"></i>
                             </div>
-                            <p class="evidence-desc">ゼミが制度上三年かつ企画で様々な場所や企画が用意されていて、統計学とインタビュー手法を体験しながら学習し、ゼミと卒論では「知的衰弱の証明」をテーマに、米国の最重要刑務所の元囚人への取材を行いました、これに関してはその刑務所ではネットフリックスが見れる事に関しての詳細調査も兼ねています。授業で得た技術を部活動に転用し、特にコロナ以降は途絶えていたテレビ局・新聞社・イベント会社との関係も独力で再展開、出演が時間の関係で難しくそれ以外のことを全て出来る様に尽力しました。</p>
+                            <p class="evidence-desc" data-i18n="ch2.i2.desc">ゼミが制度上三年かつ企画で様々な場所や企画が用意されていて、統計学とインタビュー手法を体験しながら学習し、ゼミと卒論では「知的衰弱の証明」をテーマに、米国の最重要刑務所の元囚人への取材を行いました、これに関してはその刑務所ではネットフリックスが見れる事に関しての詳細調査も兼ねています。授業で得た技術を部活動に転用し、特にコロナ以降は途絶えていたテレビ局・新聞社・イベント会社との関係も独力で再展開、出演が時間の関係で難しくそれ以外のことを全て出来る様に尽力しました。</p>
                         </div>
                     </div>
 
@@ -250,9 +260,9 @@
                     <div class="evidence-item scrap-style" style="top: 50%; left: 30%; transform: rotate(-2deg);">
                         <div class="pin blue-pin"></div>
                         <div class="evidence-content">
-                            <h3><ruby>技術と将来設計<rt>Tech and Steps</rt></ruby></h3>
+                            <h3><ruby data-i18n="ch2.i3.title">技術と将来設計<rt data-i18n="ch2.i3.rt">Tech and Steps</rt></ruby></h3>
                             <div class="evidence-clip"></div>
-                            <p class="evidence-desc">動画編集をするにはまだ不足した能力が多く、テンプレート化や基礎徹底の副産物としてホームページはそれを基軸にアニメーションを制作、ゲーム会社や出版社での経験からVtuberアーカイブはパターンを増やし、ぶいすぽっ！の紹介ページに関してはゲーム風に仕上げました。YouTubeの初動の弱さを痛感し、Bot等から情報収集されやすい構造のサイトを制作してソースを公開することで、初動の維持を狙う設計を行いました。現在、元々の目的の関係でサイト更新は途絶えていますが、資料やドット絵の制作を継続し他にLive2Dモデルを下地だけ60キャラ程度のPSDまで用意したり、難しいのかあまり作られないちびキャラのLive2Dを作ってみたり、小説やイラスト活動を継続しつつ、書類の整理が最優先ではありますがその休憩として創作活動を進めています。</p>
+                            <p class="evidence-desc" data-i18n="ch2.i3.desc">動画編集をするにはまだ不足した能力が多く、テンプレート化や基礎徹底の副産物としてホームページはそれを基軸にアニメーションを制作、ゲーム会社や出版社での経験からVtuberアーカイブはパターンを増やし、ぶいすぽっ！の紹介ページに関してはゲーム風に仕上げました。YouTubeの初動の弱さを痛感し、Bot等から情報収集されやすい構造のサイトを制作してソースを公開することで、初動の維持を狙う設計を行いました。現在、元々の目的の関係でサイト更新は途絶えていますが、資料やドット絵の制作を継続し他にLive2Dモデルを下地だけ60キャラ程度のPSDまで用意したり、難しいのかあまり作られないちびキャラのLive2Dを作ってみたり、小説やイラスト活動を継続しつつ、書類の整理が最優先ではありますがその休憩として創作活動を進めています。</p>
                         </div>
                     </div>
                 </div>
@@ -280,40 +290,55 @@
         <section id="chapter-3" class="skills section-padding">
             <div class="chapter-header page-flip-scroll">
                 <span class="chapter-num">Chapter III</span>
-                <h2 class="section-title">人物像<span>Operating Principles</span></h2>
+                <h2 class="section-title"><span data-i18n="ch3.title">人物像</span><span data-i18n="ch3.subtitle">Operating Principles</span></h2>
             </div>
-              
+
+            <div class="humanity-gallery" aria-label="人物像 追加アーカイブ">
+                <a href="image/humanity-2.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-2.png" alt="humanity 2" loading="lazy" decoding="async">
+                </a>
+                <a href="image/humanity-3.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-3.png" alt="humanity 3" loading="lazy" decoding="async">
+                </a>
+                <a href="image/humanity-6.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-6.png" alt="humanity 6" loading="lazy" decoding="async">
+                </a>
+                <a href="image/humanity-7.png" target="_blank" rel="noopener noreferrer" data-zoom="1">
+                    <img src="image/humanity-7.png" alt="humanity 7" loading="lazy" decoding="async">
+                </a>
+            </div>
+               
             <div class="skills-container">
                 <div class="persona-textbox page-flip-scroll">
                     <div class="persona-content">
-                        <p>虐待や介護とか不穏な要素が多いが、それに対してかなり徹底した対策をしていて、弟妹もいるため共有・説明をかなり簡単なものにしている。</p>
-                        <p>私は基本的にカラッとしたポジティブな人間である。創作中はネガティブを理解するために頑張ってネガティブを目指しているが苦手な位にポジティブである。また、後述する事情があってそのためにかなり理論や理屈的に考えてもいる。感情の理論的な説明としてもかなり便利だ。</p>
-                        <p>一番の問題である虐待の内容の一部は下記別資料にあるが、カウンセラーが聞いて鬱になったので推奨はしない。</p>
-                        <p>先ず私は虐待に関しては怒りや不満こそあるが特別なものとは思っていない。ヘミングウェイ等の偉人と同じくらいだろう、時代がズレただけで昔なら起きた、あり得ないと否定する理由が無い。</p>
-                        <p>虐待は過程的には間違っているが、別の視点から見れば三人とも暴力を常態化していないし、結果的には間違っていなかった。報復はしてはならないし、今後他人にもしてはいけないと折り合いをつけるためにこの様な納得をしている。</p>
-                        <p>会議を詳細にする理由は他に全員父親が違うのもあり、若干傾向が違い、私が浮気相手の子供ではないので特に当たられそれを心配されることも含めて二人がよく考えてくれているものであり特別問題が起きている訳ではない。</p>
-                        <p>しかし遺伝的な要素が前提にある以上親の性格は断片的に存在するし、とにかく母親の凶暴性はどこかしらに存在するため、弟妹と月一で対策会議をしている。</p>
+                        <p data-i18n="ch3.p1">虐待や介護とか不穏な要素が多いが、それに対してかなり徹底した対策をしていて、弟妹もいるため共有・説明をかなり簡単なものにしている。</p>
+                        <p data-i18n="ch3.p2">私は基本的にカラッとしたポジティブな人間である。創作中はネガティブを理解するために頑張ってネガティブを目指しているが苦手な位にポジティブである。また、後述する事情があってそのためにかなり理論や理屈的に考えてもいる。感情の理論的な説明としてもかなり便利だ。</p>
+                        <p data-i18n="ch3.p3">一番の問題である虐待の内容の一部は下記別資料にあるが、カウンセラーが聞いて鬱になったので推奨はしない。</p>
+                        <p data-i18n="ch3.p4">先ず私は虐待に関しては怒りや不満こそあるが特別なものとは思っていない。ヘミングウェイ等の偉人と同じくらいだろう、時代がズレただけで昔なら起きた、あり得ないと否定する理由が無い。</p>
+                        <p data-i18n="ch3.p5">虐待は過程的には間違っているが、別の視点から見れば三人とも暴力を常態化していないし、結果的には間違っていなかった。報復はしてはならないし、今後他人にもしてはいけないと折り合いをつけるためにこの様な納得をしている。</p>
+                        <p data-i18n="ch3.p6">会議を詳細にする理由は他に全員父親が違うのもあり、若干傾向が違い、私が浮気相手の子供ではないので特に当たられそれを心配されることも含めて二人がよく考えてくれているものであり特別問題が起きている訳ではない。</p>
+                        <p data-i18n="ch3.p7">しかし遺伝的な要素が前提にある以上親の性格は断片的に存在するし、とにかく母親の凶暴性はどこかしらに存在するため、弟妹と月一で対策会議をしている。</p>
 
                         <ol class="persona-list">
                             <li>
-                                <p class="persona-list-title">怒りの抑制システム（条件補完による再評価）</p>
-                                <p>怒りは「自らがそうしたとシミュレートした場合において自身が納得できないやギャップによる驚きを起こした場合」に発生する反応。</p>
-                                <p>「ポイ捨てをした人物に怒りを抱いた時、前提に一時間以上ゴミ箱を探し回った場合と付け加えて尚同じ怒りを向け続けられるか」という感じ。</p>
-                                <p>納得できない行為（初期評価）に対し、時間的制約や判断材料の不足など、複数の条件を仮定（推測）として加える。</p>
-                                <p>条件を補完することで初期評価を更新し、反応を制御する。</p>
-                                <p>この処理は創作における「分岐設計」と同一の手法であり、個人の特性および環境条件を踏まえて改良を重ねた、再現可能な処理構造である。</p>
+                                <p class="persona-list-title" data-i18n="ch3.l1.title">怒りの抑制システム（条件補完による再評価）</p>
+                                <p data-i18n="ch3.l1.p1">怒りは「自らがそうしたとシミュレートした場合において自身が納得できないやギャップによる驚きを起こした場合」に発生する反応。</p>
+                                <p data-i18n="ch3.l1.p2">「ポイ捨てをした人物に怒りを抱いた時、前提に一時間以上ゴミ箱を探し回った場合と付け加えて尚同じ怒りを向け続けられるか」という感じ。</p>
+                                <p data-i18n="ch3.l1.p3">納得できない行為（初期評価）に対し、時間的制約や判断材料の不足など、複数の条件を仮定（推測）として加える。</p>
+                                <p data-i18n="ch3.l1.p4">条件を補完することで初期評価を更新し、反応を制御する。</p>
+                                <p data-i18n="ch3.l1.p5">この処理は創作における「分岐設計」と同一の手法であり、個人の特性および環境条件を踏まえて改良を重ねた、再現可能な処理構造である。</p>
                             </li>
                             <li>
-                                <p class="persona-list-title">ポジティブの理論（確率向上と再設計）</p>
-                                <p>夢を叶えるのは、前例に倣った「要素の分析」と「計画の設計」、および「誤差の徹底した把握」である。</p>
-                                <p>先ず、努力は確率を上げるものであって必ず報われる訳ではない。 そのためリカバリや計画を惜しまずに進める。</p>
-                                <p>並外れた主張には並外れた証拠が必要、並外れた夢には並外れた計画が必要。</p>
-                                <p>計画を分解し、現状はキャリアの今後や、資源問題を背景に今学習しても再開までの目途が立たないと難しい。(たまにNoteでSFや世界史関係で時事話の資料で書いている)そのロスの方が大きいと考えたのと、労災関係で肩は数年は怪我が治らないので労働は中止している。</p>
+                                <p class="persona-list-title" data-i18n="ch3.l2.title">ポジティブの理論（確率向上と再設計）</p>
+                                <p data-i18n="ch3.l2.p1">夢を叶えるのは、前例に倣った「要素の分析」と「計画の設計」、および「誤差の徹底した把握」である。</p>
+                                <p data-i18n="ch3.l2.p2">先ず、努力は確率を上げるものであって必ず報われる訳ではない。 そのためリカバリや計画を惜しまずに進める。</p>
+                                <p data-i18n="ch3.l2.p3">並外れた主張には並外れた証拠が必要、並外れた夢には並外れた計画が必要。</p>
+                                <p data-i18n="ch3.l2.p4">計画を分解し、現状はキャリアの今後や、資源問題を背景に今学習しても再開までの目途が立たないと難しい。(たまにNoteでSFや世界史関係で時事話の資料で書いている)そのロスの方が大きいと考えたのと、労災関係で肩は数年は怪我が治らないので労働は中止している。</p>
                             </li>
                         </ol>
 
-                        <p>そんな感じで別に虐待されたものの他の人や他の時代を見れば前例はある。一番苦しんでたらそれはそれで自慢になる。夢を挫折する理由にもならないし自分の過去を笑い飛ばせずして何を笑い飛ばせるのか。</p>
-                        <p>これ以降はもう少し奥に触れることになるが、暗い部分がどうしても多くなるため細かい価値観のすり合わせや、計画の詳細等になる。</p>
+                        <p data-i18n="ch3.p8">そんな感じで別に虐待されたものの他の人や他の時代を見れば前例はある。一番苦しんでたらそれはそれで自慢になる。夢を挫折する理由にもならないし自分の過去を笑い飛ばせずして何を笑い飛ばせるのか。</p>
+                        <p data-i18n="ch3.p9">これ以降はもう少し奥に触れることになるが、暗い部分がどうしても多くなるため細かい価値観のすり合わせや、計画の詳細等になる。</p>
                     </div>
                 </div>
             </div>
@@ -323,81 +348,24 @@
         <section id="chapter-4" class="chronicles section-padding">
             <div class="chapter-header page-flip-scroll">
                 <span class="chapter-num">Chapter IV</span>
-                <h2 class="section-title">執筆物<span>The Chronicles</span></h2>
-                <p class="section-subtitle">十万冊の狂気と、10年の記録の保管庫</p>
+                <h2 class="section-title"><span data-i18n="ch4.title">執筆物</span><span data-i18n="ch4.subtitle">The Chronicles</span></h2>
+                <p class="section-subtitle" data-i18n="ch4.desc">十万冊の狂気と、10年の記録の保管庫</p>
             </div>
             
             <div class="shelf-grid">
-                <!-- Book 1 -->
-                <div class="shelf-book-container page-flip-scroll" data-href="story1.html">
-                    <div class="shelf-book">
-                        <div class="shelf-spine">
-                            <span class="spine-num">01</span>
-                            <span class="spine-title">俺は新卒を生贄に介護を続けてたぜ!</span>
-                        </div>
-                        <div class="shelf-cover">
-                            <div class="cover-content">
-                                <div class="index-meta">FILE 01 // 7KB</div>
-                                <h3>俺は新卒を生贄に介護を続けてたぜ!</h3>
-                                <p>重度介護の実像と、絶望の中で磨かれた生存本能。就活用途を超えた生々しい記録。理不尽な世界でシステムを構築する根底の思考。</p>
-                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <!-- Book 2 -->
-                <div class="shelf-book-container page-flip-scroll" data-href="story2.html" style="transition-delay: 0.1s;">
-                    <div class="shelf-book">
-                        <div class="shelf-spine">
-                            <span class="spine-num">02</span>
-                            <span class="spine-title">二十歳までに十万冊本読んだ話。</span>
-                        </div>
-                        <div class="shelf-cover">
-                            <div class="cover-content">
-                                <div class="index-meta">FILE 02 // 87KB</div>
-                                <h3>二十歳までに十万冊本読んだ話。</h3>
-                                <p>圧倒的なインプット量の根源と、情報摂取の軌跡を綴った長編大作。知識を喰らい尽くし、再構築し続ける人間の設計図。</p>
-                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <!-- Book 3 -->
-                <div class="shelf-book-container page-flip-scroll" data-href="story3.html" style="transition-delay: 0.2s;">
-                    <div class="shelf-book">
-                        <div class="shelf-spine">
-                            <span class="spine-num">03</span>
-                            <span class="spine-title">三角関数或いは平坦球面</span>
-                        </div>
-                        <div class="shelf-cover">
-                            <div class="cover-content">
-                                <div class="index-meta">FILE 03 // 9KB</div>
-                                <h3>三角関数或いは平坦球面</h3>
-                                <p>制約を感情ではなく条件として扱い、分解・補正・再設計で出力に変える思考の仕様書。こういう人間です、という前振りの先にある本編。</p>
-                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
-                            </div>
-                        </div>
-                        <div class="shelf-page"></div>
-                    </div>
-                </div>
-
                 <!-- Book 4 -->
-                <div class="shelf-book-container page-flip-scroll" data-href="story4.html" style="transition-delay: 0.3s;">
+                <div class="shelf-book-container page-flip-scroll" data-href="story4.html">
                     <div class="shelf-book">
                         <div class="shelf-spine">
                             <span class="spine-num">04</span>
-                            <span class="spine-title">バイト・インターン録：現場で見えた「採用」と「継承」</span>
+                            <span class="spine-title" data-i18n="ch4.b4.title">バイト・インターン録：現場で見えた「採用」と「継承」</span>
                         </div>
                         <div class="shelf-cover">
                             <div class="cover-content">
                                 <div class="index-meta">FILE 04 // 5KB</div>
-                                <h3>バイト・インターン録：現場で見えた「採用」と「継承」</h3>
-                                <p>工場・飲食・インターン・就活の入口で見えた構造を、再現可能な形で整理したメモ。努力の話ではなく、詰まりを仕組みに落とす話。</p>
-                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                                <h3 data-i18n="ch4.b4.title">バイト・インターン録：現場で見えた「採用」と「継承」</h3>
+                                <p data-i18n="ch4.b4.desc">工場・飲食・インターン・就活の入口で見えた構造を、再現可能な形で整理したメモ。努力の話ではなく、詰まりを仕組みに落とす話。</p>
+                                <div class="read-more"><span data-i18n="ch4.b1.link">紐解く</span> <i class="fa-solid fa-arrow-right-long"></i></div>
                             </div>
                         </div>
                         <div class="shelf-page"></div>
@@ -405,18 +373,18 @@
                 </div>
 
                 <!-- Book 5 -->
-                <div class="shelf-book-container page-flip-scroll" data-href="story5.html" style="transition-delay: 0.4s;">
+                <div class="shelf-book-container page-flip-scroll" data-href="story5.html" style="transition-delay: 0.1s;">
                     <div class="shelf-book">
                         <div class="shelf-spine">
                             <span class="spine-num">05</span>
-                            <span class="spine-title">BraveGroupを目指すにあたって：追加エピソード</span>
+                            <span class="spine-title" data-i18n="ch4.b5.title">BraveGroupを目指すにあたって：追加エピソード</span>
                         </div>
                         <div class="shelf-cover">
                             <div class="cover-content">
                                 <div class="index-meta">FILE 05 // NEW</div>
-                                <h3>BraveGroupを目指すにあたって：追加エピソード</h3>
-                                <p>志望理由の“下の層”を補う追記。アーカイブ運用で鍛えた観測・仕様化・導線設計の癖を、複雑な組織でどう武器にするかの話。</p>
-                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                                <h3 data-i18n="ch4.b5.title">BraveGroupを目指すにあたって：追加エピソード</h3>
+                                <p data-i18n="ch4.b5.desc">志望理由の“下の層”を補う追記。アーカイブ運用で鍛えた観測・仕様化・導線設計の癖を、複雑な組織でどう武器にするかの話。</p>
+                                <div class="read-more"><span data-i18n="ch4.b1.link">紐解く</span> <i class="fa-solid fa-arrow-right-long"></i></div>
                             </div>
                         </div>
                         <div class="shelf-page"></div>
@@ -424,18 +392,75 @@
                 </div>
 
                 <!-- Book 6 -->
-                <div class="shelf-book-container page-flip-scroll" data-href="story6.html" style="transition-delay: 0.5s;">
+                <div class="shelf-book-container page-flip-scroll" data-href="story6.html" style="transition-delay: 0.2s;">
                     <div class="shelf-book">
                         <div class="shelf-spine">
                             <span class="spine-num">06</span>
-                            <span class="spine-title">HTMLとかいうMVをコストカット+軽量化が可能な有能</span>
+                            <span class="spine-title" data-i18n="ch4.b6.title">HTMLとかいうMVをコストカット+軽量化が可能な有能</span>
                         </div>
                         <div class="shelf-cover">
                             <div class="cover-content">
                                 <div class="index-meta">FILE 06 // NEW</div>
-                                <h3>HTMLとかいうMVをコストカット+軽量化が可能な有能</h3>
-                                <p>HTML/CSS/JavaScriptを軽量プレビューとして使い、歌詞タイミングや座標・色・キーフレームをスクリプトで読み込めるように変換、AE/Unity/WebGLへ出力し、再入力・再配置・再同期を減らす設計。</p>
-                                <div class="read-more">紐解く <i class="fa-solid fa-arrow-right-long"></i></div>
+                                <h3 data-i18n="ch4.b6.title">HTMLとかいうMVをコストカット+軽量化が可能な有能</h3>
+                                <p data-i18n="ch4.b6.desc">HTML/CSS/JavaScriptを軽量プレビューとして使い、歌詞タイミングや座標・色・キーフレームをスクリプトで読み込めるように変換、AE/Unity/WebGLへ出力し、再入力・再配置・再同期を減らす設計。</p>
+                                <div class="read-more"><span data-i18n="ch4.b1.link">紐解く</span> <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        <div class="shelf-page"></div>
+                    </div>
+                </div>
+
+                <!-- Book 1 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story1.html" style="transition-delay: 0.3s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">01</span>
+                            <span class="spine-title" data-i18n="ch4.b1.title">俺は新卒を生贄に介護を続けてたぜ!</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 01 // 7KB</div>
+                                <h3 data-i18n="ch4.b1.title">俺は新卒を生贄に介護を続けてたぜ!</h3>
+                                <p data-i18n="ch4.b1.desc">重度介護の実像と、絶望の中で磨かれた生存本能。就活用途を超えた生々しい記録。理不尽な世界でシステムを構築する根底の思考。</p>
+                                <div class="read-more"><span data-i18n="ch4.b1.link">紐解く</span> <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story2.html" style="transition-delay: 0.4s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">02</span>
+                            <span class="spine-title" data-i18n="ch4.b2.title">二十歳までに十万冊本読んだ話。</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 02 // 87KB</div>
+                                <h3 data-i18n="ch4.b2.title">二十歳までに十万冊本読んだ話。</h3>
+                                <p data-i18n="ch4.b2.desc">圧倒的なインプット量の根源と、情報摂取の軌跡を綴った長編大作。知識を喰らい尽くし、再構築し続ける人間の設計図。</p>
+                                <div class="read-more"><span data-i18n="ch4.b1.link">紐解く</span> <i class="fa-solid fa-arrow-right-long"></i></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="shelf-book-container page-flip-scroll" data-href="story3.html" style="transition-delay: 0.5s;">
+                    <div class="shelf-book">
+                        <div class="shelf-spine">
+                            <span class="spine-num">03</span>
+                            <span class="spine-title" data-i18n="ch4.b3.title">三角関数或いは平坦球面</span>
+                        </div>
+                        <div class="shelf-cover">
+                            <div class="cover-content">
+                                <div class="index-meta">FILE 03 // 9KB</div>
+                                <h3 data-i18n="ch4.b3.title">三角関数或いは平坦球面</h3>
+                                <p data-i18n="ch4.b3.desc">制約を感情ではなく条件として扱い、分解・補正・再設計で出力に変える思考の仕様書。こういう人間です、という前振りの先にある本編。</p>
+                                <div class="read-more"><span data-i18n="ch4.b1.link">紐解く</span> <i class="fa-solid fa-arrow-right-long"></i></div>
                             </div>
                         </div>
                         <div class="shelf-page"></div>
@@ -450,6 +475,7 @@
         <p>&copy; 2026 Akashi Isaka. Handcrafted with resilience.</p>
     </footer>
 
+    <script src="locales-bundle.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
